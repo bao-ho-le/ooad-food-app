@@ -1,4 +1,5 @@
 export default function MenuGrid({ items, onAdd }) {
+  const canAdd = typeof onAdd === "function";
   return (
     <div className="max-h-[600px] overflow-y-auto pr-2">
       <div className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(256px,1fr))]">
@@ -22,14 +23,14 @@ export default function MenuGrid({ items, onAdd }) {
             <p className="text-xs text-gray-500 uppercase tracking-wide">
               {item.category}
             </p>
-            {onAdd && (
-              <button
-                className="mt-2 w-full rounded-md bg-orange-600 px-3 py-2 text-sm font-semibold text-white hover:bg-orange-700"
-                onClick={() => onAdd(item)}
-              >
-                Add to order
-              </button>
-            )}
+            <button
+              className="mt-2 w-full rounded-md bg-orange-600 px-3 py-2 text-sm font-semibold text-white hover:bg-orange-700 disabled:opacity-60 disabled:cursor-not-allowed"
+              onClick={() => canAdd && onAdd(item)}
+              disabled={!canAdd}
+              title={canAdd ? "Add this item to order" : "Add handler not available"}
+            >
+              Add to order
+            </button>
           </div>
         </div>
       ))}

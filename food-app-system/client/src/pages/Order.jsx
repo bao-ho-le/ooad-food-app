@@ -17,6 +17,15 @@ export default function OrderPage() {
     load();
   }, []);
 
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem("cart") || "[]");
+    if (stored.length) setCart(stored);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
   const addToCart = (item) => {
     setCart((prev) => {
       const found = prev.find((i) => i._id === item._id);
