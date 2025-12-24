@@ -84,7 +84,12 @@ export default function OrderPage() {
         {orderId && (
           <div className="rounded-md border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">
             Order placed! Track it with ID:{" "}
-            <span className="font-semibold">{orderId}</span>
+            <span className="font-semibold">
+              #{orderId.slice(-6).toUpperCase()}
+            </span>
+            <div className="mt-2 text-xs text-green-700">
+              Full ID (for tracking): <code className="rounded bg-green-100 px-1">{orderId}</code>
+            </div>
           </div>
         )}
       </div>

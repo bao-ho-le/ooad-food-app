@@ -3,6 +3,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import OrderPage from "./pages/Order.jsx";
 import TrackPage from "./pages/Track.jsx";
+import StaffPage from "./pages/Staff.jsx";
 
 function App() {
   const [ready, setReady] = useState(false);
@@ -27,6 +28,9 @@ function App() {
             <Link className="hover:text-orange-600" to="/track">
               Track
             </Link>
+            <Link className="hover:text-orange-600" to="/staff">
+              Staff
+            </Link>
           </nav>
         </div>
       </header>
@@ -36,6 +40,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/order" element={<OrderPage />} />
           <Route path="/track" element={<TrackPage />} />
+          <Route path="/staff" element={<StaffPage />} />
         </Routes>
       </main>
     </div>
