@@ -1,7 +1,8 @@
 export default function MenuGrid({ items, onAdd }) {
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {items.map((item) => (
+    <div className="max-h-[600px] overflow-y-auto pr-2">
+      <div className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(256px,1fr))]">
+        {items.map((item) => (
         <div key={item._id} className="rounded-lg border bg-white shadow-sm">
           {item.imageUrl && (
             <img
@@ -32,6 +33,7 @@ export default function MenuGrid({ items, onAdd }) {
           </div>
         </div>
       ))}
+      </div>
     </div>
   );
 }
